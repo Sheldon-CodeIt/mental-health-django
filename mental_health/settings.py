@@ -104,6 +104,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static') 
+]
 
 
 # Default primary key field type
@@ -118,4 +121,3 @@ if os.environ.get("VERCEL"):
     # Turn on WhiteNoise storage backend that takes care of compressing staticfiles
     # and creating unique names for each version so they can safely be cached forever
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
