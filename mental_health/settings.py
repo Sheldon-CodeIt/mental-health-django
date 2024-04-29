@@ -104,15 +104,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static') 
-]
 
-STATIC_ROOT = [
-    os.path.join(BASE_DIR, 'staticfiles', 'static') 
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if os.environ.get("VERCEL"):
+    # Tell django to copy statics to the staticfiles directory
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+    # Turn on WhiteNoise storage backend that takes care of compressing staticfiles
+    # and creating unique names for each version so they can safely be cached forever
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
