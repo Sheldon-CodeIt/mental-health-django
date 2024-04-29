@@ -18,7 +18,7 @@
       },
       {
         "src": "/static/(.*)",
-        "dest": "/static/"
+        "dest": "/static/$1"
       }
     ]
 }
