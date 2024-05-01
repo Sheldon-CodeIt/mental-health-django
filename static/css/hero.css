@@ -1,0 +1,66 @@
+.home{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 10rem;
+}
+
+.home .image{
+    flex: 1 1 45rem; 
+}
+
+.home .image img{
+    width: 100%;
+}
+
+.home .content{
+    flex: 1 1 45rem; 
+}
+
+.home .content h1{
+    font-size: 6rem;
+    color: var(--sapphire);
+    line-height: 1.8;
+    text-shadow: var(--text-shawdow);
+}
+
+.home .content p{
+    font-size: 1.1rem;
+    color: var(--apricot);
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+.home .btn span{
+    padding: 2rem 1rem;
+    border-radius: .5rem;
+    background: var(--apricot);
+    color: var(--twilight);
+    margin-left: .5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        padding-top: 10rem; /* Reduce the padding at the top */
+    }
+
+    .home .content {
+        text-align: left; /* Center align the content */
+    }
+
+    .home .content h1 {
+        font-size: 3.8rem; /* Decrease the font size of the title */
+        margin-bottom: 1rem; /* Add some margin at the bottom */
+    }
+
+    .home .content p {
+        font-size: 2rem; /* Decrease the font size of the paragraph */
+    }
+
+    .home .btn {
+        padding: 1.5rem 2rem; /* Adjust button padding */
+        font-size: 2rem; /* Adjust button font size */
+    }
+}
+

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+<body>
+    <section class="contact" id="contact">
+        <h1 class="heading"><span>Contact</span> Us</h1>
+        <div class="row">
+            <div class="image">
+                <img src="{% static 'images/contact_new.png' %}" alt="">
+            </div>
+    
+            <form action="">
+                <h3>Contact Us</h3>
+                <input type="text" placeholder="your name" class="box">
+                <input type="number" placeholder="your number" class="box">
+                <input type="email" placeholder="your email" class="box">
+                <input type="date" class="box">
+                <input type="submit" value="send" class="btn">
+            </form>
+        </div>
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>

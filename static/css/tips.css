@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --twilight:#E3D1DD;
+    --sapphire: #3142A0;
+    --rum : #7E5F86;
+    --apricot:#EC7C74;
+    --box-shadow : .5rem .5rem 0 rbga(22, 160, 133, .2);
+    --text-shadow : .4rem .4rem 0 rbga(0, 0, 0, .2);
+    --border : .3rem solid var(--twilight);
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all .2s ease-out;
+    text-decoration: none;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+section{
+    padding: 2rem 9%;
+
+}
+
+.heading{
+    text-align: center;
+    padding-bottom: 2rem;
+    text-shadow: var(--sapphire);
+    text-transform: uppercase;
+    color: var(--apricot);
+    font-size: 6rem;
+    letter-spacing: .4rem;
+}
+
+.heading span{
+    text-transform: uppercase;
+    color: var(--sapphire);
+}
+
+ .tips .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap: 1rem;
+    
+}
+
+.tips .box-container .box{
+    background: white;
+    border-radius: .1rem;
+    box-shadow: var(--box-shadow);
+    border: 2px solid var(--rum);
+    padding: 2rem;
+}
+
+.tips .box-container .box img{
+    height: 20rem;
+    border: var(--border);
+    border-radius: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+}
+
+ 
+.box {
+    width: 250px; /* Set width of each box */
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+}
+  
+  /* Style for box images */
+.box img {
+    margin-bottom: 15px; 
+}
+  
+  /* Style for box headings */
+.box h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--apricot)
+
+}
+  
+  /* Style for box paragraphs */
+.box p {
+    font-size: 10px;
+    color: var(--sapphire); /* Text color */
+    margin-bottom: 20px;
+}
+  
+  /* Style for the learn more button */
+.box .btn {
+    padding: 10px 19px;
+    padding-left: 1rem;
+    border: 2px solid var(--twilight);
+    border-radius: .5rem;
+    box-shadow:var(--twilight);
+    color: var(--rum);
+    cursor: pointer;
+    font-size: 1.7rem;
+    display: inline;
+}
+  
+.box .btn span{
+        padding: 2rem 1rem;
+        border-radius: .5rem;
+        color: var(--rum);
+        margin-left: 2rem;
+}
+  
+
+.box .btn:hover {
+    background: var(--twilight);
+    color: #020000;
+}
+  
+
+
+@media screen and (max-width: 768px) {
+
+    .heading{
+        text-align: center;
+        padding-bottom: 2rem;
+        margin-bottom: 80px;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--apricot);
+        font-size: 6rem;
+        letter-spacing: .4rem;
+    }
+    
+    
+
+    .tips {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center the boxes vertically */
+        padding-top: 2rem; /* Add some padding to the top */
+    }
+
+    .tips .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust the minimum width of each box */
+        gap: 8rem;
+    }
+
+    .box {
+        width: 400px;
+        height: 820px !important; 
+        background: #ffffff;
+        border-radius: 10px;
+        text-align: center;
+    }
+      
+    .box img {
+        width: auto;
+        max-width: 100%; /* Ensure the image does not exceed its container's width */
+        height: auto !important;
+        max-height: 300px !important; /* Set the maximum height of the image */
+    }
+    
+
+    /* Adjust styles for box headings */
+    .box h3 {
+        font-size: 3rem; /* Decrease font size of headings */
+        margin-top: 4rem;
+    }
+
+    /* Adjust styles for box paragraphs */
+    .box p {
+        font-size: 2rem; /* Decrease font size of paragraphs */
+        margin-top: 3.5rem; 
+        margin-bottom: 3.5rem; 
+    }
+
+    /* Adjust styles for the learn more button */
+    .box .btn {
+        padding: 15px;
+        font-size: 2rem; /* Decrease font size of buttons */
+    }
+}

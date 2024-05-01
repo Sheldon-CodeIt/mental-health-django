@@ -1,0 +1,117 @@
+.team .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap: 2rem;
+}
+
+.team .box-container .box{
+    text-align: center;
+    background: #fff;
+    border-radius: .5rem;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 1rem;
+}
+
+.team .box-container .box img{
+    height: 20rem;
+    border: var(--border);
+    border-radius: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.team .box-container .box h3{
+    color: var(--rum);
+    font-size: 2.5rem;
+}
+
+.team .box-container .box span{
+    color: var(--apricot);
+    font-size: 1.5rem;
+}
+
+.team .box-container .box .share{
+    padding-top: 2rem;
+}
+
+.team .box-container .box .share a{
+    height: 2rem;
+    width: 2rem;
+    line-height: 4rem;
+    font-size: 2rem;
+    color: var(--rum);
+    border-radius: .5rem;
+    margin: .3rem;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .heading{
+        text-align: center;
+        padding-bottom: 2rem;
+        margin-bottom: 80px;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--apricot);
+        font-size: 6rem;
+        letter-spacing: .4rem;
+    }
+    
+    
+
+    .team {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center the boxes vertically */
+        padding-top: 2rem; /* Add some padding to the top */
+    }
+
+    .team .box-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust the minimum width of each box */
+        gap: 4rem;
+    }
+
+    .box {
+        width: 400px;
+        height: 650px; 
+        background: #ffffff;
+        border-radius: 10px;
+        text-align: center;
+    }
+      
+    .box img {
+        width: 350px;
+        max-width: 100%; /* Ensure the image does not exceed its container's width */
+        height: auto !important;
+        max-height: 500px !important; /* Set the maximum height of the image */
+    }
+    
+
+    /* Adjust styles for box headings */
+    .box h3 {
+        font-size: 3.5rem !important; /* Decrease font size of headings */
+        margin-top: 4rem;
+    }
+
+    /* Adjust styles for box paragraphs */
+    .box span {
+        font-size: 2rem !important; /* Decrease font size of paragraphs */
+        margin-top: 3.5rem; 
+        margin-bottom: 3.5rem; 
+    }
+
+    /* Adjust styles for the learn more button */
+    .box .share {
+        align-items: center !important;
+        text-align: center !important;
+
+    }
+
+    .box .share a {
+        font-size: 3.5rem !important; /* Decrease font size of buttons */
+        margin: 20px !important;
+    }
+}

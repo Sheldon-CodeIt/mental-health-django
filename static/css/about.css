@@ -1,0 +1,52 @@
+
+ 
+
+.about .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.about .row .image{
+    flex: 1 1 45rem;
+}
+
+.about .row .image img{
+    width: 100%;
+}
+
+.about .row .content{
+    flex: 1 1 45rem;
+}
+
+.about .row .content h3{
+    color: var(--sapphire);
+    text-align: var(--text-shawdow);
+    font-size: 3rem;
+    line-height: 1.8;
+}
+
+.about .row .content p{
+    color: var(--apricot);
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+@media screen and (max-width: 768px) {
+    .about .row .content h3 {
+        margin-top: 4rem;
+        font-size: 3.8rem; /* Adjust heading font size for mobile */
+        line-height: 1.5; /* Adjust line spacing for mobile */
+    }
+
+    .about .row .content p {
+        font-size: 2rem; /* Adjust paragraph font size for mobile */
+    }
+
+    .about .row .content .btn {
+        padding: 15px;
+        font-size: 2rem; /* Decrease font size of buttons */
+    }
+}

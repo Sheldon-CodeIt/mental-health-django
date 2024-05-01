@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul class="nav-bar">
+                <li class="logo">
+                    <a href="#home" class="logo"><i class="fas fa-heartbeat"></i>&nbsp;mentalhealth</a>
+                </li>
+                <input type="checkbox" id="check">
+                <span class="menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <label for="check" class="close-menu"><i class="fas fa-times" id="closeIcon"></i></label>
+                </span>
+                <label for="check" class="open-menu"><i class="fas fa-bars" id="openIcon"></i></label>
+                
+            </ul>
+        </nav>
+    </header>
+</body>
+<script>
+    document.getElementById('openIcon').addEventListener('click', function() {
+        document.getElementById('openIcon').style.display = 'none';
+        document.getElementById('closeIcon').style.display = 'block';
+    });
+    
+    document.getElementById('closeIcon').addEventListener('click', function() {
+        document.getElementById('openIcon').style.display = 'block';
+        document.getElementById('closeIcon').style.display = 'none';
+    });
+
+    
+    // Add event listener to each menu item
+    var menuItems = document.querySelectorAll('.menu li a');
+    menuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Check if the checkbox is checked
+            var checkbox = document.getElementById('check');
+            if (checkbox.checked) {
+                // Uncheck the checkbox to close the menu
+                checkbox.checked = false;
+                // Hide the close icon and show the hamburger icon
+                document.getElementById('openIcon').style.display = 'block';
+                document.getElementById('closeIcon').style.display = 'none';
+            }
+        });
+    });
+</script>
+</html>
