@@ -35,11 +35,13 @@
     document.getElementById('openIcon').addEventListener('click', function() {
         document.getElementById('openIcon').style.display = 'none';
         document.getElementById('closeIcon').style.display = 'block';
+        document.body.classList.add('menu-open'); // Add class to body
     });
     
     document.getElementById('closeIcon').addEventListener('click', function() {
         document.getElementById('openIcon').style.display = 'block';
         document.getElementById('closeIcon').style.display = 'none';
+        document.body.classList.remove('menu-open'); // Remove class from body
     });
 
     
@@ -55,6 +57,7 @@
                 // Hide the close icon and show the hamburger icon
                 document.getElementById('openIcon').style.display = 'block';
                 document.getElementById('closeIcon').style.display = 'none';
+                document.body.classList.remove('menu-open'); // Remove class from body
             }
         });
     });
