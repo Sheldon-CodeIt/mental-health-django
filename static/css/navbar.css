@@ -134,3 +134,29 @@ html{
     .open-menu , .close-menu {display: block;}
     #check:checked ~ .menu {right: 0;}
 }
+
+@media(min-width: 360px){
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 120vh;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 100;
+        background-color: #f4e4e4;
+        transition: all 0.2s ease-in-out;
+    }
+    .menu li {margin-top: 30px;}
+    /* .menu li a {padding: 10px;} */
+    /* .menu li {margin-top: 10px;} */
+    .menu li a {
+        padding: 15px; /* Increased padding */
+        font-size: 25px; /* Adjusted font size */
+    }
+    .open-menu , .close-menu {display: block;}
+    #check:checked ~ .menu {right: 0;}
+}
+
