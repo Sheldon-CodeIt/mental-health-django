@@ -21,7 +21,6 @@ body {
 
 .heading{
     padding:2rem 9%;
-    position: fixed;
     top: 0; left:0; right: 0;
     z-index: 1000;
     display: flex;
@@ -69,7 +68,6 @@ body {
     margin: 0 auto;
     padding: 50px;
     gap: 1.5rem;
-    padding-top: 10rem;
   }
 
 .videos {
