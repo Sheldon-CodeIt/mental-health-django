@@ -19,14 +19,14 @@
     border: none;
     text-transform: capitalize;
     transition: all .2s ease-out;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 html{
     font-size: 62.5%;
     overflow-x: hidden;
-    /* scroll-padding-top: 7rem;
-    scroll-behavior: smooth; */
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
 }
 
 
@@ -48,14 +48,16 @@ html{
     align-items: center;
     list-style: none;
     position: relative;
-    /* background-color: #fff;
-    padding: 12px 20px; */
 }
 
 
 .header .logo{
     font-size: 2.5rem;
     color: black;
+}
+
+.header .logo a{
+    text-decoration: none;
 }
 
 .header .logo i{
