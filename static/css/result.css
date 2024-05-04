@@ -11,13 +11,21 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
     background-image: linear-gradient(to top right,#3142A0,#EC7C74);
-    background-size: cover;
     min-height: 100vh;
+
+    background-image: linear-gradient(to top right,#3142A0,#EC7C74);
+    justify-content: center;
+    align-items: center;
 }
+
+html{
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
 
 .heading{
     padding:2rem 9%;
@@ -27,6 +35,9 @@ body {
     align-items: center;
     justify-content: space-between;
 }
+
+
+
   
 .heading a{
     padding: 10px 19px;
@@ -70,16 +81,78 @@ body {
     gap: 1.5rem;
   }
 
+
+  
+.content {
+    background-color: rgba(255, 255, 255, 0.7); /* Adjust transparency here */
+    padding: 20px;
+    border-radius: 10px;
+}
+
 .videos {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
     margin: 0 0 0 6rem;
-  }
-  
-.content {
-    background-color: rgba(255, 255, 255, 0.7); /* Adjust transparency here */
-    padding: 20px;
-    border-radius: 10px;
+}
+
+
+
+@media (max-width: 480px) {
+
+    .videos {
+        width: 100%;
+        margin: auto;
+        align-items: center;
+        align-content: center;
+    }
+    .videos h2{
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        align-items: center;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .container-main {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 1.5rem;
+    }
+    
+
+}
+
+@media (max-width: 360px) {
+
+    .videos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: auto;
+    }
+    .videos h2{
+        margin-top: 5rem;
+        align-items: center;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .container-main {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 1.5rem;
+    }
+    
+
 }
