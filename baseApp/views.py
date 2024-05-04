@@ -3,15 +3,9 @@ from django.contrib.auth.models import User
 from dotenv import load_dotenv
 import google.generativeai as genai
 import os
-import pickle
-import numpy as np
 import re
-
-
-ml_model = pickle.load(open("./mental_health_prediction.sav",'rb'))
-
-with open('scaler.pkl', 'rb') as f:
-    scaler = pickle.load(f)
+import requests
+import json
 
 
 load_dotenv()
@@ -21,13 +15,15 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 model = genai.GenerativeModel('gemini-pro')
 
+# API endpoint URL
+api_url = 'http://sheldonchettiar3.pythonanywhere.com/predict-mental-health/'
+
+
 
 # Create your views here.
 
 def Home(request):
     return render (request,'baseApp/index.html')
-
-
 
 
 
@@ -136,15 +132,30 @@ def Test(request):
 
         # Prediction Logic (replace with your actual model)
 
-        input_tuple = (feeling_nervous,panic,breathing_rapidly,sweating,trouble_in_concentration, 
-                 having_trouble_in_sleeping,having_trouble_with_work,hopelessness,anger,over_react,change_in_eating,suicidal_thought,feeling_tired,close_friend,social_media_addiction,weight_gain,material_possessions,introvert,popping_up_stressful_memory,having_nightmares,avoids_people_or_activities,feeling_negative,trouble_concentrating,blamming_yourself)
+        input_list = [feeling_nervous,panic,breathing_rapidly,sweating,trouble_in_concentration, 
+                 having_trouble_in_sleeping,having_trouble_with_work,hopelessness,anger,over_react,change_in_eating,suicidal_thought,feeling_tired,close_friend,social_media_addiction,weight_gain,material_possessions,introvert,popping_up_stressful_memory,having_nightmares,avoids_people_or_activities,feeling_negative,trouble_concentrating,blamming_yourself]
 
-        print(input_tuple)
-        input_array = np.array(input_tuple)
-        input_reshaped = input_array.reshape(1, -1)
-        scaled_input = scaler.transform(input_reshaped)
-        prediction = ml_model.predict(scaled_input)
-        print(prediction)
+        # Prepare request data
+        data = {
+            'input_features': input_list
+        }
+    
+
+
+        # Send POST request to API endpoint
+        response = requests.post(api_url, json=data)
+
+        prediction = None
+        
+        if response.status_code == 200:
+            # Extract prediction from response
+            try:
+                prediction = response.json()['prediction']
+                print("Prediction:", prediction)
+            except KeyError:
+                raise Exception("Response does not contain 'prediction' key.")
+        else:
+            raise Exception("Error occurred: {}".format(response.text))
 
         # Mental health conditions and descriptions dictionary
         conditions = {
@@ -157,10 +168,10 @@ def Test(request):
         }
 
         # Access data based on prediction
-        current_issue = conditions.get(prediction[0])
+        current_issue = conditions.get(prediction)
         print("current_issue", current_issue)
 
-        if prediction[0] == 0:
+        if prediction == 0:
             prompt = f"The User is completely normal. Just provide some more self care tips."
         else:
             prompt = f"Write a supportive and informative message about {current_issue['issue']}. Include information on what it is, symptoms, and how to cope."
@@ -197,13 +208,13 @@ def Test(request):
             return "<br>".join(formatted_lines) 
 
         formatted_content = format_content(response.text)
-        print(videos.get(prediction[0], []))
+        print(videos.get(prediction, []))
 
         context = {
             "issue": current_issue["issue"],
             "description": current_issue["description"],
             "generated_content": formatted_content,
-            "videos": videos.get(prediction[0], []),
+            "videos": videos.get(prediction, []),
         }
 
         return render(request, 'baseApp/result.html', context)
