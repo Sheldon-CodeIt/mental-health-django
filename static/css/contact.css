@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --twilight:#E3D1DD;
+    --sapphire: #3142A0;
+    --rum : #7E5F86;
+    --apricot:#EC7C74;
+    --box-shadow : .5rem .5rem 0 rbga(22, 160, 133, .2);
+    --text-shadow : .4rem .4rem 0 rbga(0, 0, 0, .2);
+    --border : .3rem solid var(--twilight);
+}
 
 .contact .row{
     display: flex;
@@ -16,12 +27,12 @@
 
 .contact .row form{
     flex: 1 1 45rem;
-    background: #fff ;
-    border: var(--border);
-    box-shadow: var(--box-shadow);
+    background: #f7f4f8 ;
     text-align: center;
     padding: 2rem;
     border-radius: .5rem;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
 }
 
 .contact .row form h3{
@@ -31,17 +42,374 @@
 }
 
 .contact .row form .box{
-    width: 100%;
-    margin: .7rem 0;
+    height: 30px !important;
+    width: 90% !important;
+    margin-bottom: 2rem;
     border-radius: .5rem;
     border: var(--border);
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: grey;
-    text-transform: none;
-    padding: 1rem;
+    text-transform: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    box-sizing: border-box;
+    text-align: center;
+    align-content: center;
 }
 
 .contact .row form .btn{
-    padding: 1rem 3rem;
+    margin-top: 1rem;
+    padding: 1rem 2rem; /* Adjust button padding */
+    font-size: 1.8rem; /* Adjust button font size */
+}
+
+
+
+@media (max-width: 1000px){
+
+        
+    .contact .heading{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--apricot);
+        font-size: 6rem;
+        letter-spacing: .4rem;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+
+    .contact .heading span{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--sapphire);
+        font-size: 6rem;
+        letter-spacing: .4rem;
+    }
+
+    .contact .row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+
+    .contact .row .image {
+        flex: 1 1 100%; /* Adjusted flex basis for smaller screens */
+    }
+
+    .contact .row .image img {
+        width: 100%;
+    }
+
+    .contact .row form {
+        background: #f7f4f8;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        padding: auto;
+        border-radius: .5rem;
+        border: var(--border);
+        box-shadow: var(--box-shadow);
+    }
+
+    .formContainer{
+        align-items: center;
+        margin: auto;
+    }
+
+    .contact .row form h3 {
+        color: var(--rum);
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact .row form .box{
+        height: 30px !important;
+        width: 90% !important;
+        margin-bottom: 2rem;
+        border-radius: .5rem;
+        border: var(--border);
+        font-size: 2rem;
+        color: grey;
+        text-transform: 1rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        box-sizing: border-box;
+        text-align: center;
+        align-content: center;
+    }
+    
+    .contact .row form .btn{
+        margin-top: 1rem;
+        padding: 1rem 2rem; /* Adjust button padding */
+        font-size: 1.8rem; /* Adjust button font size */
+    }
+
+}
+
+@media (max-width: 720px){
+
+        
+    .contact .heading{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--apricot);
+        font-size: 5rem;
+        letter-spacing: .4rem;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+
+    .contact .heading span{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--sapphire);
+        font-size: 5rem;
+        letter-spacing: .4rem;
+    }
+
+    .contact .row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+
+    .contact .row .image {
+        flex: 1 1 100%; /* Adjusted flex basis for smaller screens */
+    }
+
+    .contact .row .image img {
+        width: 100%;
+    }
+
+    .contact .row form {
+        background: #f7f4f8;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        padding: auto;
+        border-radius: .5rem;
+        border: var(--border);
+        box-shadow: var(--box-shadow);
+    }
+
+    .formContainer{
+        align-items: center;
+        margin: auto;
+    }
+
+    .contact .row form h3 {
+        color: var(--rum);
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact .row form .box{
+        height: 10px !important;
+        width: 90% !important;
+        margin-bottom: 2rem;
+        border-radius: .5rem;
+        border: var(--border);
+        font-size: 2rem;
+        color: grey;
+        text-transform: 1rem;
+        padding-top: 3rem;
+        box-sizing: border-box;
+        text-align: center;
+        align-content: center;
+    }
+    
+    .contact .row form .btn{
+        margin-top: 1rem;
+        padding: 1rem 2rem; /* Adjust button padding */
+        font-size: 1.8rem; /* Adjust button font size */
+    }
+
+}
+
+@media (max-width: 480px){
+
+        
+    .contact .heading{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--apricot);
+        font-size: 3.5rem;
+        letter-spacing: .4rem;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+
+    .contact .heading span{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--sapphire);
+        font-size: 3.5rem;
+        letter-spacing: .4rem;
+    }
+
+    .contact .row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+
+    .contact .row .image {
+        flex: 1 1 100%; /* Adjusted flex basis for smaller screens */
+    }
+
+    .contact .row .image img {
+        width: 100%;
+    }
+
+    .contact .row form {
+        background: #f7f4f8;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        padding: auto;
+        border-radius: .5rem;
+        border: var(--border);
+        box-shadow: var(--box-shadow);
+    }
+
+    .formContainer{
+        align-items: center;
+        margin: auto;
+    }
+
+    .contact .row form h3 {
+        color: var(--rum);
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact .row form .box{
+        height: 10px !important;
+        width: 90% !important;
+        margin-bottom: 2rem;
+        border-radius: .5rem;
+        border: var(--border);
+        font-size: 2rem;
+        color: grey;
+        text-transform: 1rem;
+        padding-top: 3rem;
+        box-sizing: border-box;
+        text-align: center;
+        align-content: center;
+    }
+    
+    .contact .row form .btn{
+        margin-top: 1rem;
+        padding: 1rem 2rem; /* Adjust button padding */
+        font-size: 1.5rem; /* Adjust button font size */
+    }
+
+
+}
+
+
+@media (max-width: 360px){
+
+        
+    .contact .heading{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--apricot);
+        font-size: 3.5rem;
+        letter-spacing: .4rem;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+
+    .contact .heading span{
+        text-align: center;
+        padding-bottom: 2rem;
+        text-shadow: var(--sapphire);
+        text-transform: uppercase;
+        color: var(--sapphire);
+        font-size: 3.5rem;
+        letter-spacing: .4rem;
+    }
+
+    .contact .row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+
+    .contact .row .image {
+        flex: 1 1 100%; /* Adjusted flex basis for smaller screens */
+    }
+
+    .contact .row .image img {
+        width: 100%;
+    }
+
+    .contact .row form {
+        background: #f7f4f8;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        padding: auto;
+        border-radius: .5rem;
+        border: var(--border);
+        box-shadow: var(--box-shadow);
+    }
+
+    .formContainer{
+        align-items: center;
+        margin: auto;
+    }
+
+    .contact .row form h3 {
+        color: var(--rum);
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact .row form .box{
+        height: 10px !important;
+        width: 90% !important;
+        margin-bottom: 2rem;
+        border-radius: .5rem;
+        border: var(--border);
+        font-size: 2rem;
+        color: grey;
+        text-transform: 1rem;
+        padding-top: 3rem;
+        box-sizing: border-box;
+        text-align: center;
+        align-content: center;
+    }
+    
+    .contact .row form .btn{
+        margin-top: 1rem;
+        padding: 1rem 2rem; /* Adjust button padding */
+        font-size: 1.5rem; /* Adjust button font size */
+    }
+
+
 }
 
