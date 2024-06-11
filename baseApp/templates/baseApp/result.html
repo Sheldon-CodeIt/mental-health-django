@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/result.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <header class="heading">
@@ -25,7 +26,7 @@
             <h2>You have {{ issue }}</h2>
             <p class="lead">{{ description }}</p>
             <hr>
-            <p>
+            <p id="markdown-content">
                 {{ generated_content | safe }}
             </p>
         </div>
@@ -55,6 +56,13 @@
     </div>
     </section>
       
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const markdownContent = `{{ generated_content|escapejs }}`;
+          document.getElementById('markdown-content').innerHTML = marked.parse(markdownContent);
+      });
+    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

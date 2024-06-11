@@ -7,6 +7,23 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <title>Document</title>
+   <style>
+      @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
+      .loader {
+          display: none;
+          align-items: center;
+          margin: auto;
+          border: 16px solid #f3f3f3;
+          border-top: 16px solid #3498db;
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 1s linear infinite;
+      }
+  </style>
   
    <link rel="stylesheet" href="{% static 'css/test.css' %}">
 </head>
@@ -17,7 +34,7 @@
       </header>
       
       
-      <div class="slider">
+      <div id="formContent" class="slider">
          
 
          <form id="myForm" method="POST" action=""> 
@@ -229,16 +246,31 @@
                <br>
                <br>
             
-            <a href="#" onclick="document.getElementById('myForm').submit();" class="btn">Click to Check</a>
+            <a href="#" onclick="submitForm(event);" class="btn">Click to Check</a>
             </div>
 
          </form>
-
          <button id="prev"><</button>
          <button id="next">></button>
       </div>
+
+      {% comment %} <div id="loadingText" style="display:none; align-items: center; margin: auto;">Loading...</div> {% endcomment %}
+
+      <div class="loader" id="loader" style="display:none; align-items: center; margin: auto;  border: 16px solid #f3f3f3; border-top: 16px solid #3498db; border-radius: 50%; width: 50px; height: 50px;"></div>
    
+
+
+
 <script src="{% static 'js/app.js' %}"></script>
+<script>
+   function submitForm(event) {
+      event.preventDefault();
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('loader').style.display = 'block';
+      document.getElementById('myForm').submit();
+   }
+</script>
+
 
 </body>
 </html>
