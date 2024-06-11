@@ -6,14 +6,18 @@ import os
 import re
 import requests
 import json
+from groq import Groq
+
 
 
 load_dotenv()
-os.getenv("GOOGLE_API_KEY")
+groq_api_key = os.getenv("GROQ_API_KEY")
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+client = Groq(
+    # This is the default and can be omitted
+    api_key= os.environ.get("GROQ_API_KEY"),
+)
 
-model = genai.GenerativeModel('gemini-pro')
 
 # API endpoint URL
 api_url = 'http://sheldonchettiar3.pythonanywhere.com/predict-mental-health/'
@@ -25,13 +29,6 @@ def Home(request):
 
 
 videos = {
-    0: {
-        "https://youtu.be/z-IR48Mb3W0?si=5V8YxrbxuXTcN3Se": "https://img.youtube.com/vi/z-IR48Mb3W0/0.jpg",
-        "https://youtu.be/Fm73eVoi4dw?si=yiRGIfOsi4VIrYpp": "https://img.youtube.com/vi/Fm73eVoi4dw/0.jpg",
-        "https://youtu.be/BZOLxSQwER8?si=vUNztWxoFUPzw6ey": "https://img.youtube.com/vi/BZOLxSQwER8/0.jpg",
-        "https://youtu.be/OzO8EAOEGJ8?si=Oi_oMnBGtPlhIJFR": "https://img.youtube.com/vi/OzO8EAOEGJ8/0.jpg",
-        "https://youtu.be/MZ5r99SBLrs?si=dT5TX5Yme2Mlt3de": "https://img.youtube.com/vi/MZ5r99SBLrs/0.jpg",
-    },
     1: {
         "https://youtu.be/9mPwQTiMSj8?si=tkaZ40cu20cLtjNu": "https://img.youtube.com/vi/9mPwQTiMSj8/0.jpg",
         "https://youtu.be/JOKS9Bx8-Sw?si=s_paZtpEv8ERHnlO": "https://img.youtube.com/vi/JOKS9Bx8/0.jpg",
@@ -97,11 +94,14 @@ def Test(request):
 
         input_list = [feeling_nervous, panic, breathing_rapidly, sweating, trouble_in_concentration,
                       having_trouble_in_sleeping, having_trouble_with_work, hopelessness, anger, over_react, change_in_eating, suicidal_thought, feeling_tired, close_friend, social_media_addiction, weight_gain, material_possessions, introvert, popping_up_stressful_memory, having_nightmares, avoids_people_or_activities, feeling_negative, trouble_concentrating, blamming_yourself]
+        
+
 
         # Prepare request data
         data = {
             'input_features': input_list
         }
+
 
         # Send POST request to API endpoint
         response = requests.post(api_url, json=data)
@@ -129,22 +129,51 @@ def Test(request):
 
         # Access data based on prediction
         current_issue = conditions.get(prediction)
-        print("current_issue", current_issue)
 
         if prediction == 0:
             prompt = f"The User is completely normal. Just provide some more self-care tips."
-        else:
+            chat_completion = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "you are a helpful mental health assistant focused on improving the mental health of the user by giving some insights and tips."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                model="llama3-8b-8192",
+            )
+            response = chat_completion.choices[0].message.content
+            context = {
+                "issue": "No issue",
+                "description": "The user is completely normal.",
+                "generated_content": response,
+                "videos": None,
+            }
+        else: 
             prompt = f"Write a supportive and informative message about {current_issue['issue']}. Include information on what it is, symptoms, and how to cope."
-
-        response = model.generate_content(prompt)
-
-        # Pass the markdown content to the template
-        context = {
-            "issue": current_issue["issue"],
-            "description": current_issue["description"],
-            "generated_content": response.text,
-            "videos": videos.get(prediction, []),
-        }
+            chat_completion = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "you are a helpful mental health assistant focused on improving the mental health of the user by giving some insights and tips."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                model="llama3-8b-8192",
+            )
+            response = chat_completion.choices[0].message.content
+            context = {
+                "issue": current_issue["issue"],
+                "description": current_issue["description"],
+                "generated_content": response,
+                "videos": videos.get(0, []),
+            }
 
         return render(request, 'baseApp/result.html', context)
 
