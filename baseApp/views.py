@@ -172,7 +172,7 @@ def Test(request):
                 "issue": current_issue["issue"],
                 "description": current_issue["description"],
                 "generated_content": response,
-                "videos": videos.get(0, []),
+                "videos": videos.get(prediction),
             }
 
         return render(request, 'baseApp/result.html', context)
